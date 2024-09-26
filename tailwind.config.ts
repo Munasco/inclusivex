@@ -13,7 +13,8 @@ const config: Config = {
   	extend: {
   		colors: {
   			background: 'var(--background)',
-  			foreground: 'var(--foreground)'
+  			foreground: 'var(--foreground)',
+			'sleek-green': '#00FF94',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -22,6 +23,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [tailwindcss_animate, require("tailwindcss-animate")],
+  plugins: [tailwindcss_animate],
 };
 export default config;

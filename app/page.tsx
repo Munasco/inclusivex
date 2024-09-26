@@ -1,80 +1,144 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
+import {ReactNode, useEffect, useState} from "react"
+import {motion, useAnimation} from "framer-motion"
 import Link from "next/link"
-import { Zap, Search, Activity, Twitter, ShieldCheck, Brain, PlugZap} from "lucide-react"
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
 import Image from "next/image"
+import {Button} from "@/components/ui/button"
+import {Input} from "@/components/ui/input"
+import VisionSection from "@/app/visionSection";
 
-export default function LandingPageComponent() {
+import {
+    Activity,
+    BarChart,
+    Brain,
+    ChevronRight,
+    FileText,
+    GitBranch,
+    Menu,
+    PlugZap,
+    Search,
+    ShieldCheck,
+    Twitter,
+    X,
+    Zap,
+} from "lucide-react"
+import {StaticImport} from "next/dist/shared/lib/get-img-props"
+import {demoUrl} from "@/constants/urls";
+
+const sleekGreen = "#00FF94"
+
+type ComplianceBadge = {
+    name: string
+    image: string | StaticImport
+}
+
+type Feature = {
+    icon: ReactNode
+    title: string
+    description: string
+}
+
+type Offering = {
+    icon: ReactNode
+    title: string
+    description: string
+}
+
+type Testimonial = {
+    name: string
+    company: string
+    avatar: string
+    content: string
+}
+
+export default function LandingPage() {
     const [showAnimation, setShowAnimation] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const controls = useAnimation()
 
     useEffect(() => {
         setShowAnimation(true)
-    }, [])
+        controls.start({
+            opacity: [0.3, 0.6, 0.3],
+            transition: {duration: 3, repeat: Infinity, ease: "easeInOut"}
+        }).catch(() => {
+            console.log("Animation cancelled")
+        })
+    }, [controls])
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    }
-
-    const features = [
+    const offerings: Offering[] = [
         {
-            icon: <Zap className="w-10 h-10 text-[#00FF94]" />,
-            title: "Comprehensive Lightning-Fast Scans",
-            description: "Detect issues quickly and thoroughly.\n",
+            icon: <FileText className="w-8 h-8 text-sleek-green"/>,
+            title: "AI-Powered Compliance Engine",
+            description: "Our cutting-edge AI continuously scans and fixes accessibility violations, ensuring 24/7 compliance.",
         },
         {
-            icon: <Brain className="w-10 h-10 text-[#00FF94]" />,
-            title: "AI-Powered Fixes",
-            description: "Smart suggestions for quick resolutions",
+            icon: <Search className="w-8 h-8 text-sleek-green"/>,
+            title: "Comprehensive Accessibility Checker",
+            description: "Instantly identify and diagnose WCAG compliance issues across your entire digital ecosystem.",
         },
         {
-            icon: <ShieldCheck className="w-10 h-10 text-[#00FF94]" />,
-            title: "WCAG Compliance",
-            description: "Ensure your site meets accessibility standards",
+            icon: <Activity className="w-8 h-8 text-sleek-green"/>,
+            title: "Real-time Accessibility Monitoring",
+            description: "Proactively track and manage accessibility concerns with detailed insights for your development team.",
         },
         {
-            icon: <PlugZap className="w-10 h-10 text-[#00FF94]" />,
+            icon: <BarChart className="w-8 h-8 text-sleek-green"/>,
+            title: "Expert-led Accessibility Audits",
+            description: "Receive comprehensive WCAG and ADA compliance audits from our team of certified accessibility experts.",
+        },
+        {
+            icon: <FileText className="w-8 h-8 text-sleek-green"/>,
+            title: "VPAT & ACR Generation",
+            description: "Easily create and maintain up-to-date Voluntary Product Accessibility Templates and Accessibility Conformance Reports.",
+        },
+        {
+            icon: <FileText className="w-8 h-8 text-sleek-green"/>,
+            title: "Document Accessibility Conversion",
+            description: "Transform your existing documents into fully accessible formats, compliant with the latest standards.",
+        },
+        {
+            icon: <GitBranch className="w-8 h-8 text-sleek-green"/>,
+            title: "Integrated CI/CD Accessibility Checks",
+            description: "Seamlessly integrate accessibility testing into your development workflow for continuous compliance.",
+        },
+    ]
+
+    const complianceBadges: ComplianceBadge[] = [
+        {name: "ADA", image: "/placeholder.svg?height=80&width=80"},
+        {name: "WCAG", image: "/placeholder.svg?height=80&width=80"},
+        {name: "EN 301 549", image: "/placeholder.svg?height=80&width=80"},
+        {name: "EAA", image: "/placeholder.svg?height=80&width=80"},
+        {name: "GDPR", image: "/placeholder.svg?height=80&width=80"},
+        {name: "COPPA", image: "/placeholder.svg?height=80&width=80"},
+        {name: "UNRUH", image: "/placeholder.svg?height=80&width=80"},
+    ]
+
+    const features: Feature[] = [
+        {
+            icon: <Zap className="w-10 h-10 text-sleek-green"/>,
+            title: "Lightning-Fast Scans",
+            description: "Our advanced algorithms swiftly detect accessibility issues, providing comprehensive results in seconds.",
+        },
+        {
+            icon: <Brain className="w-10 h-10 text-sleek-green"/>,
+            title: "AI-Driven Solutions",
+            description: "Leverage cutting-edge AI to automatically generate intelligent fixes for identified accessibility problems.",
+        },
+        {
+            icon: <ShieldCheck className="w-10 h-10 text-sleek-green"/>,
+            title: "WCAG Compliance Assurance",
+            description: "Stay ahead of accessibility standards with continuous updates aligned with the latest WCAG guidelines.",
+        },
+        {
+            icon: <PlugZap className="w-10 h-10 text-sleek-green"/>,
             title: "Seamless Integration",
-            description: "Works with your existing workflow",
+            description: "Effortlessly incorporate our tools into your existing workflow, supporting major platforms and frameworks.",
         },
     ]
 
-    const offerings = [
-        {
-            icon: <Zap className="w-10 h-10 text-[#00FF94]" />,
-            title: "Comprehensive Error Detection",
-            description: "Detect accessibility issues in webpages and Figma designs with precision.",
-        },
-        {
-            icon: <Search className="w-10 h-10 text-[#00FF94]" />,
-            title: "AI-Powered Improvements",
-            description: "Automated compliance fixes for identified accessibility issues.",
-        },
-        {
-            icon: <Activity className="w-10 h-10 text-[#00FF94]" />,
-            title: "Ongoing Monitoring",
-            description: "Continuous website monitoring with automated workflows to address new problems.",
-        },
-    ]
-
-    const testimonials = [
+    const testimonials: Testimonial[] = [
         {
             name: "John Maverick",
             company: "Shopify",
@@ -136,337 +200,75 @@ export default function LandingPageComponent() {
             content: "Finally, a product that makes accessibility not just easy, but proactive!",
         },
     ]
+
     return (
-        <div className="flex flex-col min-h-screen bg-[#0A0B0D] text-white relative overflow-hidden">
-            <motion.div
-                className="absolute inset-0 pointer-events-none"
-                animate={{
-                    background: [
-                        "radial-gradient(circle, rgba(0,255,148,0) 0%, 100%)",
-                        "radial-gradient(circle, rgba(0,255,148,0.1) 0%, rgba(0,255,148,0) 70%)",
-                        "radial-gradient(circle, rgba(0,255,148,0) 0%, 100%)"
-                    ]
-                }}
-                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-            />
-            <header className="border-b border-[#1E2028] relative z-10">
+        <div
+            className="flex flex-col min-h-screen bg-gradient-to-b from-[#0A0B0D] to-[#1E2028] text-white relative overflow-hidden">
+            <DottedBackground/>
+
+            <header className="border-b border-[#1E2028] relative z-10 backdrop-blur-sm bg-opacity-80 bg-[#0A0B0D]">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     <Link href="/" className="text-2xl font-bold text-white flex items-center">
-                        <svg className="w-8 h-8 mr-2" viewBox="0 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 2Z" fill="#00FF94" />
-                            <path d="M2 17L12 22L22 17" stroke="#00FF94" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M2 12L12 17L22 12" stroke="#00FF94" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill={sleekGreen}/>
+                            <path d="M2 17L12 22L22 17" stroke={sleekGreen} strokeWidth="2" strokeLinecap="round"
+                                  strokeLinejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke={sleekGreen} strokeWidth="2" strokeLinecap="round"
+                                  strokeLinejoin="round"/>
                         </svg>
                         InclusiveX
                     </Link>
                     <nav className="hidden md:flex space-x-6">
-                        <Link href="#" className="text-[#A1A1AA] hover:text-white transition-colors">
-                            Documentation
-                        </Link>
-                        <Link href="#" className="text-[#A1A1AA] hover:text-white transition-colors">
-                            Pricing
-                        </Link>
-                        <Link href="#" className="text-[#A1A1AA] hover:text-white transition-colors">
-                            Blog
-                        </Link>
-                        <Link href="#" className="text-[#A1A1AA] hover:text-white transition-colors">
-                            Careers
-                        </Link>
-                        <Link href="#" className="text-[#A1A1AA] hover:text-white transition-colors">
-                            Demo
-                        </Link>
+                        <NavLink href="#">Documentation</NavLink>
+                        <NavLink href="#">Pricing</NavLink>
+                        <NavLink href="#">Blog</NavLink>
+                        <NavLink href="#">Careers</NavLink>
+                        <NavLink href="#">Demo</NavLink>
                     </nav>
-                    <div className="flex items-center space-x-4">
-                        <Button variant="ghost" className="text-[#A1A1AA] hover:text-gray-700">
-                            Login
+                    <div className="flex items-center space-x-2">
+                        <Button variant="ghost" className="text-[#A1A1AA] hover:bg-dark-theme hover:text-white">
+                            Sign In
                         </Button>
-                        <Button className="bg-[#00FF94] text-black hover:bg-[#00CC75]">Get Started</Button>
+                        <Button className="bg-[#00FF94] text-black hover:bg-[#00CC75]">
+                            <a href="/coming-soon">Get Started</a>
+                        </Button>
                     </div>
+                    <button
+                        className="md:hidden text-white"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {isMenuOpen ? <X/> : <Menu/>}
+                    </button>
                 </div>
+                {isMenuOpen && (
+                    <div className="md:hidden bg-[#0A0B0D] p-4">
+                        <nav className="flex flex-col space-y-4">
+                            <NavLink href="#">Documentation</NavLink>
+                            <NavLink href="#">Pricing</NavLink>
+                            <NavLink href="#">Blog</NavLink>
+                            <NavLink href="#">Careers</NavLink>
+                            <NavLink href="#">Demo</NavLink>
+                        </nav>
+                    </div>
+                )}
             </header>
+
             <main className="flex-grow relative z-10">
-                <section className="py-20 px-4">
-                    <div className="container mx-auto text-center">
-                        <motion.h1
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-6xl font-bold mb-6 text-white"
-                        >
-                            Achieve Full Accessibility Compliance for Your Website
-                        </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto"
-                        >
-                            Instantly identify and resolve accessibility issues. Deliver a flawless experience to every user, with ease.
-                        </motion.p>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex justify-center space-x-4"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="relative"
-                            >
-                                <motion.div
-                                    className="absolute inset-0 rounded-lg"
-                                    animate={{
-                                        boxShadow: [
-                                            "0 rgba(0, 255, 148, 0)",
-                                            "0 10px rgba(0, 255, 148, 0.1)",
-                                            "0 20px rgba(0, 255, 148, 0)",
-                                        ],
-                                    }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
-                                />
-                                <Button size="lg" className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
-                                    Start Detecting
-                                </Button>
-                            </motion.div>
-                            <Button size="lg" variant="outline" className="bg-dark-theme text-white border-[#1E2028] hover:bg-[#E2E8F0]">
-                                Request a Demo
-                            </Button>
-                        </motion.div>
-                    </div>
-                </section>
-
-                <section className="py-16">
-                    <div className="container mx-auto px-4">
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate={showAnimation ? "visible" : "hidden"}
-                            className="grid grid-cols-1 md:grid-cols-4 gap-8"
-                        >
-                            {features.map((feature, index) => (
-                                <motion.div key={index} variants={itemVariants} className="bg-[#1E2028] p-6 rounded-lg shadow-lg">
-                                    <div className="flex items-center justify-center mb-4">
-                                        {feature.icon}
-                                    </div>
-                                    <h1 className="text-xl font-semibold mb-2 text-center text-white">{feature.title}</h1>
-                                    <p className="text-[#A1A1AA] text-center">{feature.description}</p>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4">
-                    <div className="container mx-auto">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-                            Experience the power of InclusiveX
-                        </h2>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
-                            className="bg-[#1E2028] p-8 rounded-lg shadow-lg relative overflow-hidden"
-                        >
-                            <div className="flex items-center space-x-2 mb-4">
-                                <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
-                            </div>
-                            <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-                <code>{`// Example of InclusiveX in action
-import { InclusiveX } from 'inclusivex';
-
-const app = new InclusiveX();
-
-app.scan('#main-content').then(issues => {
-  console.log('Accessibility issues found:', issues);
-  app.fix(issues).then(results => {
-    console.log('Fixed issues:', results);
-  });
-});`}</code>
-              </pre>
-                            <motion.div
-                                animate={{
-                                    background: [
-                                        "linear-gradient(0deg, rgba(0,255,148,0) 0%, 100%)",
-                                        "linear-gradient(0deg, rgba(0,255,148,0.1) 0%, rgba(0,255,148,0) 100%)",
-                                        "linear-gradient(0deg, rgba(0,255,148,0) 0%, 100%)"
-                                    ]
-                                }}
-                                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                                className="absolute inset-0 pointer-events-none"
-                            />
-                        </motion.div>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4 bg-[#1E2028]">
-                    <div className="container mx-auto">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-                            What InclusiveX Offers
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {offerings.map((offering, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                                    className="bg-[#2A2C35] p-6 rounded-lg shadow-lg"
-                                >
-                                    <div className="flex items-center justify-center mb-4">
-                                        {offering.icon}
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-2 text-center text-white">{offering.title}</h3>
-                                    <p className="text-[#A1A1AA] text-center">{offering.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4">
-                    <div className="container mx-auto">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-                            Documentation Snapshot
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8 }}
-                                className="bg-[#1E2028] p-6 rounded-lg shadow-lg"
-                            >
-                                <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
-                                <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-                  <code>{`npm install inclusivex
-
-import { InclusiveX } from 'inclusivex';
-
-const app = new InclusiveX();
-app.init();
-
-// Start scanning
-app.scan();`}</code>
-                </pre>
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="bg-[#1E2028] p-6 rounded-lg shadow-lg"
-                            >
-                                <h3 className="text-xl font-semibold mb-4 text-white">API Reference</h3>
-                                <ul className="list-disc list-inside text-[#A1A1AA]">
-                                    <li>app.scan(selector: string): Promise&lt;Issue[]&gt;</li>
-                                    <li>app.fix(issues: Issue[]): Promise&lt;Result[]&gt;</li>
-                                    <li>app.monitor(options: MonitorOptions): void</li>
-                                    <li>app.generateReport(): Report</li>
-                                </ul>
-                            </motion.div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4 bg-[#1E2028]">
-                    <div className="container mx-auto">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-                            What Our Users Say
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {testimonials.map((testimonial, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                                    className="bg-[#2A2C35] p-6 rounded-lg shadow-lg"
-                                >
-                                    <div className="flex items-center mb-4">
-                                        <Image
-                                            src={testimonial.avatar}
-                                            alt={testimonial.name}
-                                            width={40}
-                                            height={40}
-                                            className="rounded-full mr-4"
-                                        />
-                                        <div>
-                                            <h3 className="font-semibold text-white">{testimonial.name}</h3>
-                                            <p className="text-sm text-[#A1A1AA]">{testimonial.company}</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-[#E2E8F0]">{testimonial.content}</p>
-                                    <div className="mt-4 flex items-center text-[#00FF94]">
-                                        <Twitter className="w-5 h-5 mr-2" />
-                                        <span className="text-sm">Posted on Twitter</span>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4 bg-[#0A0B0D] relative overflow-hidden">
-                    <motion.div
-                        className="absolute inset-0 pointer-events-none"
-                        animate={{
-                            background: [
-                                "radial-gradient(circle at center, rgba(0,255,148,0.1) 0%, rgba(0,255,148,0) 50%)",
-                                "radial-gradient(circle at center, rgba(0,255,148,0.2) 0%, rgba(0,255,148,0) 50%)",
-                                "radial-gradient(circle at center, rgba(0,255,148,0.1) 0%, rgba(0,255,148,0) 50%)"
-                            ]
-                        }}
-                        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-                    />
-                    <div className="container mx-auto text-center relative z-10">
-                        <motion.h2
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-3xl md:text-4xl font-bold mb-8 text-white"
-                        >
-                            Transform Your Web Accessibility Today
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
-                        >
-                            Join thousands of developers who are creating more inclusive digital experiences with InclusiveX.
-                        </motion.p>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="relative inline-block"
-                            >
-                                <motion.div
-                                    className="absolute inset-0 rounded-lg"
-                                    animate={{
-                                        boxShadow: [
-                                            "0 rgba(0, 255, 148, 0)",
-                                            "0 10px rgba(0, 255, 148, 0.1)",
-                                            "0 20px rgba(0, 255, 148, 0)",
-                                        ],
-                                    }}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
-                                />
-                                <Button size="lg" className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
-                                    <Zap className="mr-2 h-4 w-4" />
-                                    Get Started Now
-                                </Button>
-                            </motion.div>
-                        </motion.div>
-                    </div>
-                </section>
+                <HeroSection/>
+                <FeaturesSection features={features} showAnimation={showAnimation}/>
+                <PowerSection/>
+                <OfferingsSection offerings={offerings}/>
+                <DocumentationSection/>
+                <VisionSection/>
+                <ComplianceSection complianceBadges={complianceBadges}/>
+                <AccessibilityCheckerSection/>
+                <TestimonialsSection testimonials={testimonials}/>
+                <CTASection/>
             </main>
-            <footer className="border-t border-[#1E2028] py-8 relative z-10">
+
+            <footer className="border-t border-[#1E2028] py-8 relative z-10 bg-[#0A0B0D]">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <p className="text-[#A1A1AA] text-sm">&copy; 2024 InclusiveX. All rights reserved.</p>
@@ -485,5 +287,444 @@ app.scan();`}</code>
                 </div>
             </footer>
         </div>
+    )
+}
+
+function NavLink({href, children}: { href: string; children: ReactNode }) {
+    return (
+        <Link href={href} className="text-[#A1A1AA] hover:text-white transition-colors">
+            {children}
+        </Link>
+    )
+}
+
+function DottedBackground() {
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1" fill={sleekGreen} fillOpacity="0.2"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#dotPattern)"/>
+            </svg>
+        </div>
+    )
+}
+
+function HeroSection() {
+    return (
+        <section className="py-20 px-4 relative overflow-hidden">
+            <motion.div
+                className="container mx-auto text-center relative z-10"
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{duration: 0.8}}
+            >
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+                    Ensure 100% Web Accessibility Compliance For Your Website
+                </h1>
+                <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
+                    Empower your web presence with InclusiveX. Our AI-driven platform instantly identifies and resolves
+                    accessibility issues, ensuring a seamless experience for every user.
+                </p>
+                <motion.div
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8, delay: 0.4}}
+                    className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <motion.div
+                        whileHover={{scale: 1.05}}
+                        whileTap={{scale: 0.95}}
+                        className="relative"
+                    >
+                        <motion.div
+                            className="absolute inset-0 rounded-lg"
+                            animate={{
+                                boxShadow: [
+                                    "0 rgba(0, 255, 148, 0)",
+                                    "0 10px rgba(0, 255, 148, 0.1)",
+                                    "0 20px rgba(0, 255, 148, 0)",
+                                ],
+                            }}
+                            transition={{duration: 1.5, repeat: Infinity}}
+                        />
+                        <Button size="lg"
+                                className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
+                            <a href="/coming-soon">Start Your Accessibility Journey</a>
+                        </Button>
+                    </motion.div>
+                    <Button size="lg" variant="outline"
+                            className="bg-dark-theme text-white border-[#1E2028] hover:bg-[#E2E8F0]">
+                        <a href={demoUrl}> Schedule a Demo With Us</a>
+                    </Button>
+                </motion.div>
+            </motion.div>
+        </section>
+    )
+}
+
+function FeaturesSection({features,  showAnimation}: { features: Feature[]; showAnimation: boolean }) {
+    const containerVariants = {
+        hidden: {opacity: 0},
+        visible: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: {y: 20, opacity: 0},
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    }
+
+    return (
+        <section className="py-16 relative overflow-hidden">
+            <div className="container mx-auto px-4 relative z-10">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={showAnimation ? "visible" : "hidden"}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    {features.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            className="bg-gradient-to-br from-[#1E2028] to-[#2A2C35] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        >
+                            <div className="flex items-center justify-center mb-4">
+                                <motion.div
+                                    whileHover={{scale: 1.1, rotate: 360}}
+                                    transition={{duration: 0.5}}
+                                >
+                                    {feature.icon}
+                                </motion.div>
+                            </div>
+                            <h1 className="text-xl font-semibold mb-2 text-center text-white">{feature.title}</h1>
+                            <p className="text-[#A1A1AA] text-center">{feature.description}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+function PowerSection() {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
+            <div className="container mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
+                    Experience the Power of InclusiveX
+                </h2>
+                <motion.div
+                    initial={{opacity: 0, scale: 0.9}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.8}}
+                    className="bg-[#0A0B0D] p-8 rounded-lg shadow-lg relative overflow-hidden"
+                >
+                    <div className="flex items-center space-x-2 mb-4">
+                        <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                        <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+                    </div>
+                    <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
+            <code>{`// Harness the power of InclusiveX
+import { InclusiveX } from 'inclusivex';
+
+const app = new InclusiveX();
+
+app.scan('#main-content').then(issues => {
+  console.log('Accessibility issues detected:', issues);
+  app.fix(issues).then(results => {
+    console.log('Resolved accessibility concerns:', results);
+  });
+});`}</code>
+          </pre>
+                    <motion.div
+                        animate={{
+                            background: [
+                                `linear-gradient(0deg, ${sleekGreen}00 0%, ${sleekGreen}00 100%)`,
+                                `linear-gradient(0deg, ${sleekGreen}22 0%, ${sleekGreen}00 100%)`,
+                                `linear-gradient(0deg, ${sleekGreen}00 0%, ${sleekGreen}00 100%)`
+                            ]
+                        }}
+                        transition={{duration: 2, repeat: Infinity, repeatType: "reverse"}}
+                        className="absolute inset-0 pointer-events-none"
+                    />
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+function OfferingsSection({offerings}: { offerings: Offering[] }) {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-b from-[#1E2028] to-[#0A0B0D]">
+            <div className="container mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+                    Comprehensive Accessibility Solutions
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {offerings.map((offering, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.8, delay: index * 0.1}}
+                            className="bg-gradient-to-br from-[#2A2C35] to-[#1E2028] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="flex items-center justify-center mb-4">
+                                {offering.icon}
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2 text-center text-white">{offering.title}</h3>
+                            <p className="text-[#A1A1AA] text-center">{offering.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function DocumentationSection() {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
+            <div className="container mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+                    Comprehensive Documentation
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <motion.div
+                        initial={{opacity: 0, x: -20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{duration: 0.8}}
+                        className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
+                    >
+                        <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
+                        <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
+              <code>{`npm install inclusivex
+
+import { InclusiveX } from 'inclusivex';
+
+const app = new InclusiveX();
+app.init();
+
+// Begin accessibility scan
+app.scan();`}</code>
+            </pre>
+                    </motion.div>
+                    <motion.div
+                        initial={{opacity: 0, x: 20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{duration: 0.8, delay: 0.2}}
+                        className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
+                    >
+                        <h3 className="text-xl font-semibold mb-4 text-white">API Reference</h3>
+                        <ul className="list-disc list-inside text-[#A1A1AA]">
+                            <li>app.scan(selector: string): Promise&lt;Issue[]&gt;</li>
+                            <li>app.fix(issues: Issue[]): Promise&lt;Result[]&gt;</li>
+                            <li>app.monitor(options: MonitorOptions): void</li>
+                            <li>app.generateReport(): Report</li>
+                        </ul>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBadge[] }) {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-b from-[#0A0B0D] to-[#1E2028]">
+            <div className="container mx-auto text-center">
+                <motion.h2
+                    initial={{opacity: 0, y: -20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8}}
+                    className="text-3xl md:text-4xl font-bold mb-8 text-white"
+                >
+                    Stay Ahead of Global Accessibility Standards
+                </motion.h2>
+                <motion.p
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8, delay: 0.2}}
+                    className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
+                >
+                    Our cutting-edge technology and expert services ensure continuous alignment with the latest
+                    accessibility regulations across the U.S., Canada, and Europe. We adhere to the highest global
+                    compliance standards for digital assets, including WCAG 2.2 and EN 301 549.
+                </motion.p>
+                <div className="flex flex-wrap justify-center gap-8">
+                    {complianceBadges.map((badge: ComplianceBadge, index: number) => (
+                        <motion.div
+                            key={index}
+                            initial={{opacity: 0, scale: 0.5}}
+                            animate={{opacity: 1, scale: 1}}
+                            transition={{duration: 0.5, delay: index * 0.1}}
+                        >
+                            <Image
+                                src={badge.image}
+                                alt={`${badge.name} Compliance Badge`}
+                                width={80}
+                                height={80}
+                                className="rounded-full"
+                            />
+                        </motion.div>
+                    ))}
+                </div>
+                <div className="mt-12">
+                    <Button variant="outline"
+                            className="border-sleek-green hover:bg-sleek-green text-black">
+                        Explore Our Compliance Standards <ChevronRight className="ml-2 h-4 w-4"/>
+                    </Button>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function AccessibilityCheckerSection() {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
+            <div className="container mx-auto">
+                <div className="bg-gradient-to-r from-[#0A0B0D] to-[#1E2028] rounded-lg p-8 md:p-12">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white">
+                        Evaluate Your Website&#39;s Accessibility - Free of Charge
+                    </h2>
+                    <p className="text-xl text-[#A1A1AA] mb-8 text-center max-w-2xl mx-auto">
+                        Our Accessibility Checker swiftly identifies ADA & WCAG compliance issues, providing an instant
+                        diagnosis of potential violations and areas for improvement.
+                    </p>
+                    <div
+                        className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                        <Input
+                            type="url"
+                            placeholder="Enter your website URL"
+                            className="bg-white text-black w-full md:w-96"
+                        />
+                        <Button className="bg-sleek-green text-black hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
+                            Start Free Accessibility Check
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function TestimonialsSection({testimonials}: { testimonials: Testimonial[] }) {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-b from-[#1E2028] to-[#0A0B0D]">
+            <div className="container mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+                    Voices of Satisfied Clients
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {testimonials.map((testimonial, index: number) => (
+                        <motion.div
+                            key={index}
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.8, delay: index * 0.2}}
+                            className="bg-gradient-to-br from-[#2A2C35] to-[#1E2028] p-6 rounded-lg shadow-lg"
+                        >
+                            <div className="flex items-center mb-4">
+                                <Image
+                                    src={testimonial.avatar}
+                                    alt={testimonial.name}
+                                    width={40}
+                                    height={40}
+                                    className="rounded-full mr-4"
+                                />
+                                <div>
+                                    <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                                    <p className="text-sm text-[#A1A1AA]">{testimonial.company}</p>
+                                </div>
+                            </div>
+                            <p className="text-[#E2E8F0]">{testimonial.content}</p>
+                            <div className="mt-4 flex items-center text-sleek-green">
+                                <Twitter className="w-5 h-5 mr-2"/>
+                                <span className="text-sm">Shared on Twitter</span>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function CTASection() {
+    return (
+        <section className="py-20 px-4 bg-gradient-to-r from-[#0A0B0D] to-[#1E2028] relative overflow-hidden">
+            <motion.div
+                className="absolute inset-0 pointer-events-none"
+                animate={{
+                    background: [
+                        `radial-gradient(circle at center, ${sleekGreen}22 0%, ${sleekGreen}00 50%)`,
+                        `radial-gradient(circle at center, ${sleekGreen}44 0%, ${sleekGreen}00 50%)`,
+                        `radial-gradient(circle at center, ${sleekGreen}22 0%, ${sleekGreen}00 50%)`
+                    ]
+                }}
+                transition={{duration: 4, repeat: Infinity, repeatType: "reverse"}}
+            />
+            <div className="container mx-auto text-center relative z-10">
+                <motion.h2
+                    initial={{opacity: 0, y: -20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8}}
+                    className="text-3xl md:text-4xl font-bold mb-8 text-white"
+                >
+                    Elevate Your Digital Accessibility Today
+                </motion.h2>
+                <motion.p
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8, delay: 0.2}}
+                    className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
+                >
+                    Join the ranks of forward-thinking developers and businesses creating truly inclusive digital
+                    experiences with InclusiveX. Your journey towards a more accessible web starts here.
+                </motion.p>
+                <motion.div
+                    initial={{opacity: 0, scale: 0.9}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.8, delay: 0.4}}
+                >
+                    <motion.div
+                        whileHover={{scale: 1.05}}
+                        whileTap={{scale: 0.95}}
+                        className="relative inline-block"
+                    >
+                        <motion.div
+                            className="absolute inset-0 rounded-lg"
+                            animate={{
+                                boxShadow: [
+                                    "0 rgba(0, 255, 148, 0)",
+                                    "0 10px rgba(0, 255, 148, 0.1)",
+                                    "0 20px rgba(0, 255, 148, 0)",
+                                ],
+                            }}
+                            transition={{duration: 1.5, repeat: Infinity}}
+                        />
+                        <Button size="lg"
+                                className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
+                            <Zap className="mr-2 h-4 w-4"/>
+                            <a href="/coming-soon">Start Free Trial</a>
+                        </Button>
+                    </motion.div>
+                </motion.div>
+            </div>
+        </section>
     )
 }
