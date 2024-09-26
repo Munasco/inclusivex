@@ -32,28 +32,33 @@ export default function VisionSection() {
                     <div className="lg:w-1/2 mb-10 lg:mb-0">
                         <h2 className="text-sleek-green text-xl font-semibold mb-4">MAKING THE WORLD MORE INCLUSIVE</h2>
                         <h3 className="text-4xl md:text-5xl font-bold mb-6">
-                            Our vision: <span className="text-sleek-green">to make the internet accessible, inclusive & equitable</span>
+                            Our Mission: <span className="text-sleek-green">make the internet accessible, inclusive & equitable</span>
                         </h3>
                         <p className="text-xl text-[#A1A1AA] mb-8">
-                            We live our lives online. It's where we read the news, order groceries, and connect with people. But 20% of the population has disabilities that exclude them from using it. InclusiveX's goal is to make the online world inclusive. It's about time!
+                            From buying Jordans to paying taxes or pursuing remote learning, the web powers so
+                            much of our daily lives. Yet, 25% of the population still face barriers due to disabilities
+                            that limit their access to these essential online services.
                         </p>
                         <div className="flex items-center mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                src="/images/munachi-profile.jpg"
                                 alt="Shir Ekerling"
-                                width={60}
-                                height={60}
-                                className="rounded-full mr-4"
+                                width={100}
+                                height={80}
+                                className="rounded-full mr-4 object-cover h-16"
                             />
                             <div>
                                 <blockquote className="text-lg font-semibold mb-2">
-                                    &quot;Sustainable web accessibility is not just for businesses but first and foremost for users with disabilities.&quot;
+                                    &quot;25 years ago, we dreamt of a connected future and got the internet but 25% of
+                                    us are still being left out of it.&quot;
                                 </blockquote>
-                                <p className="text-sleek-green">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ InclusiveX</span></p>
+                                <p className="text-sleek-green">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ InclusiveX</span>
+                                </p>
                             </div>
                         </div>
-                        <Button variant="outline" className="text-sleek-green border-sleek-green hover:bg-sleek-green hover:text-black">
-                            MORE ON OUR VISION <ChevronRight className="ml-2 h-4 w-4" />
+                        <Button variant="outline"
+                                className="text-sleek-green border-sleek-green hover:bg-sleek-green hover:text-black">
+                            MORE ON OUR VISION <ChevronRight className="ml-2 h-4 w-4"/>
                         </Button>
                     </div>
                     <div className="lg:w-1/2 relative">

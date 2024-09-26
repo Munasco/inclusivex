@@ -260,7 +260,6 @@ export default function LandingPage() {
                 <FeaturesSection features={features} showAnimation={showAnimation}/>
                 <PowerSection/>
                 <OfferingsSection offerings={offerings}/>
-                <DocumentationSection/>
                 <VisionSection/>
                 <ComplianceSection complianceBadges={complianceBadges}/>
                 <AccessibilityCheckerSection/>
@@ -323,7 +322,7 @@ function HeroSection() {
                 transition={{duration: 0.8}}
             >
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-                    Ensure 100% Web Accessibility Compliance For Your Website
+                    Ensure 100% Digital Accessibility Compliance For Your Website
                 </h1>
                 <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
                     Empower your web presence with InclusiveX. Our AI-driven platform instantly identifies and resolves
