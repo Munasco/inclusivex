@@ -3,7 +3,7 @@ import {Button} from "@/components/ui/button";
 import {ChevronRight} from "lucide-react";
 const teamImages = [
     {
-        src: "https://images.unsplash.com/photo-1507152927179-bc4ebfef7103?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJsYWNrJTIwd29tYW58ZW58MHx8MHx8fDA%3D",
+        src: "https://images.unsplash.com/photo-1554244933-d876deb6b2ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGJsYWNrJTIwd29tYW58ZW58MHx8MHx8fDI%3D",
         alt: "Team member 1",
         className: "rounded-full absolute top-10 left-24 object-cover w-16 h-16",
     },
@@ -15,12 +15,12 @@ const teamImages = [
     {
         src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
         alt: "Team member 3",
-        className: "rounded-full absolute bottom-20 left-20 object-cover w-10 h-10",
+        className: "rounded-full absolute bottom-20 left-20 object-cover w-16 h-16",
     },
     {
-        src: "https://images.unsplash.com/photo-1573497019236-17dd59b5fa20?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
+        src: "https://images.unsplash.com/photo-1591688535138-8b1995fe8891?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2hlZWwlMjBjaGFpcnxlbnwwfHwwfHx8MA%3D%3D",
         alt: "Team member 4",
-        className: "rounded-full absolute bottom-10 right-10",
+        className: "rounded-full absolute bottom-10 right-28 object-cover w-16 h-16",
     },
 ];
 
@@ -57,7 +57,7 @@ export default function VisionSection() {
                             </div>
                         </div>
                         <Button variant="outline"
-                                className="text-sleek-green border-sleek-green hover:bg-sleek-green hover:text-black">
+                                className="text-green-950 font-bold border-sleek-green hover:bg-sleek-green hover:text-black">
                             MORE ON OUR VISION <ChevronRight className="ml-2 h-4 w-4"/>
                         </Button>
                     </div>
