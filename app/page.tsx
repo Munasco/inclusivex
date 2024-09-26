@@ -494,52 +494,52 @@ function OfferingsSection({offerings}: { offerings: Offering[] }) {
     )
 }
 
-function DocumentationSection() {
-    return (
-        <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
-            <div className="container mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-                    Comprehensive Documentation
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <motion.div
-                        initial={{opacity: 0, x: -20}}
-                        animate={{opacity: 1, x: 0}}
-                        transition={{duration: 0.8}}
-                        className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
-                    >
-                        <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
-                        <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-              <code>{`npm install inclusivex
-
-import { InclusiveX } from 'inclusivex';
-
-const app = new InclusiveX();
-app.init();
-
-// Begin accessibility scan
-app.scan();`}</code>
-            </pre>
-                    </motion.div>
-                    <motion.div
-                        initial={{opacity: 0, x: 20}}
-                        animate={{opacity: 1, x: 0}}
-                        transition={{duration: 0.8, delay: 0.2}}
-                        className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
-                    >
-                        <h3 className="text-xl font-semibold mb-4 text-white">API Reference</h3>
-                        <ul className="list-disc list-inside text-[#A1A1AA]">
-                            <li>app.scan(selector: string): Promise&lt;Issue[]&gt;</li>
-                            <li>app.fix(issues: Issue[]): Promise&lt;Result[]&gt;</li>
-                            <li>app.monitor(options: MonitorOptions): void</li>
-                            <li>app.generateReport(): Report</li>
-                        </ul>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    )
-}
+// function DocumentationSection() {
+//     return (
+//         <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
+//             <div className="container mx-auto">
+//                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+//                     Comprehensive Documentation
+//                 </h2>
+//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//                     <motion.div
+//                         initial={{opacity: 0, x: -20}}
+//                         animate={{opacity: 1, x: 0}}
+//                         transition={{duration: 0.8}}
+//                         className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
+//                     >
+//                         <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
+//                         <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
+//               <code>{`npm install inclusivex
+//
+// import { InclusiveX } from 'inclusivex';
+//
+// const app = new InclusiveX();
+// app.init();
+//
+// // Begin accessibility scan
+// app.scan();`}</code>
+//             </pre>
+//                     </motion.div>
+//                     <motion.div
+//                         initial={{opacity: 0, x: 20}}
+//                         animate={{opacity: 1, x: 0}}
+//                         transition={{duration: 0.8, delay: 0.2}}
+//                         className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
+//                     >
+//                         <h3 className="text-xl font-semibold mb-4 text-white">API Reference</h3>
+//                         <ul className="list-disc list-inside text-[#A1A1AA]">
+//                             <li>app.scan(selector: string): Promise&lt;Issue[]&gt;</li>
+//                             <li>app.fix(issues: Issue[]): Promise&lt;Result[]&gt;</li>
+//                             <li>app.monitor(options: MonitorOptions): void</li>
+//                             <li>app.generateReport(): Report</li>
+//                         </ul>
+//                     </motion.div>
+//                 </div>
+//             </div>
+//         </section>
+//     )
+// }
 
 function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBadge[] }) {
     return (
