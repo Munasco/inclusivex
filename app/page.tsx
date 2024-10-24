@@ -322,7 +322,7 @@ function HeroSection() {
                 transition={{duration: 0.8}}
             >
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-                    Ensure 100% Digital Accessibility Compliance For Your Website
+                    100% Digital Accessibility Compliance For Your Website
                 </h1>
                 <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
                     Empower your web presence with InclusiveX. Our AI-driven platform instantly identifies and resolves
@@ -609,7 +609,7 @@ function AccessibilityCheckerSection() {
                         <Input
                             type="url"
                             placeholder="Enter your website URL"
-                            className="bg-white text-black w-full md:w-96"
+                            className="bg-white text-black w-full md:w-96 rounded-md placeholder-gray-600"
                         />
                         <Button className="bg-sleek-green text-black hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
                             Start Free Accessibility Check
