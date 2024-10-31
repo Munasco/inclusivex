@@ -143,7 +143,7 @@ export default function LandingPage() {
             name: "John Maverick",
             company: "Shopify",
             avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-            content: "InclusiveX has revolutionized our approach to web accessibility. It's a game-changer!",
+            content: "YouXtra has revolutionized our approach to web accessibility. It's a game-changer!",
         },
         {
             name: "Emily Parker",
@@ -155,13 +155,13 @@ export default function LandingPage() {
             name: "Alex Johnson",
             company: "WebWizards",
             avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-            content: "InclusiveX's real-time monitoring has helped us maintain WCAG compliance effortlessly.",
+            content: "YouXtra's real-time monitoring has helped us maintain WCAG compliance effortlessly.",
         },
         {
             name: "Sophia Martinez",
             company: "InnovateX",
             avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-            content: "Thanks to InclusiveX, our design team can now focus on creativity while accessibility is handled automatically.",
+            content: "Thanks to YouXtra, our design team can now focus on creativity while accessibility is handled automatically.",
         },
         {
             name: "Ethan Turner",
@@ -173,7 +173,7 @@ export default function LandingPage() {
             name: "Olivia Green",
             company: "SoftSolutions",
             avatar: "https://randomuser.me/api/portraits/women/6.jpg",
-            content: "InclusiveX made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
+            content: "YouXtra made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
         },
         {
             name: "Liam Brown",
@@ -185,13 +185,13 @@ export default function LandingPage() {
             name: "Emma Wilson",
             company: "UIWorks",
             avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-            content: "Our accessibility audits have never been smoother thanks to InclusiveX.",
+            content: "Our accessibility audits have never been smoother thanks to YouXtra.",
         },
         {
             name: "Benjamin Lee",
             company: "CodeCraft",
             avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-            content: "I can’t imagine managing our site’s compliance without InclusiveX anymore.",
+            content: "I can’t imagine managing our site’s compliance without YouXtra anymore.",
         },
         {
             name: "Grace Collins",
@@ -217,7 +217,7 @@ export default function LandingPage() {
                             <path d="M2 12L12 17L22 12" stroke={sleekGreen} strokeWidth="2" strokeLinecap="round"
                                   strokeLinejoin="round"/>
                         </svg>
-                        InclusiveX
+                        YouXtra
                     </Link>
                     <nav className="hidden md:flex space-x-6">
                         <NavLink href="#">Documentation</NavLink>
@@ -270,7 +270,7 @@ export default function LandingPage() {
             <footer className="border-t border-[#1E2028] py-8 relative z-10 bg-[#0A0B0D]">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-[#A1A1AA] text-sm">&copy; 2024 InclusiveX. All rights reserved.</p>
+                        <p className="text-[#A1A1AA] text-sm">&copy; 2024 YouXtra. All rights reserved.</p>
                         <nav className="flex space-x-6 mt-4 md:mt-0">
                             <Link href="#" className="text-[#A1A1AA] hover:text-white text-sm">
                                 Privacy Policy
@@ -325,7 +325,7 @@ function HeroSection() {
                     100% Digital Accessibility Compliance For Your Website
                 </h1>
                 <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
-                    Empower your web presence with InclusiveX. Our AI-driven platform instantly identifies and resolves
+                    Empower your web presence with YouXtra. Our AI-driven platform instantly identifies and resolves
                     accessibility issues, ensuring a seamless experience for every user.
                 </p>
                 <motion.div
@@ -422,7 +422,7 @@ function PowerSection() {
         <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
             <div className="container mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-                    Experience the Power of InclusiveX
+                    Experience the Power of YouXtra
                 </h2>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
@@ -436,10 +436,10 @@ function PowerSection() {
                         <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                     </div>
                     <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-            <code>{`// Harness the power of InclusiveX
-import { InclusiveX } from 'inclusivex';
+            <code>{`// Harness the power of YouXtra
+import { YouXtra } from 'YouXtra';
 
-const app = new InclusiveX();
+const app = new YouXtra();
 
 app.scan('#main-content').then(issues => {
   console.log('Accessibility issues detected:', issues);
@@ -510,11 +510,11 @@ function OfferingsSection({offerings}: { offerings: Offering[] }) {
 //                     >
 //                         <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
 //                         <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-//               <code>{`npm install inclusivex
+//               <code>{`npm install YouXtra
 //
-// import { InclusiveX } from 'inclusivex';
+// import { YouXtra } from 'YouXtra';
 //
-// const app = new InclusiveX();
+// const app = new YouXtra();
 // app.init();
 //
 // // Begin accessibility scan
@@ -693,7 +693,7 @@ function CTASection() {
                     className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
                 >
                     Join the ranks of forward-thinking developers and businesses creating truly inclusive digital
-                    experiences with InclusiveX. Your journey towards a more accessible web starts here.
+                    experiences with YouXtra. Your journey towards a more accessible web starts here.
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
