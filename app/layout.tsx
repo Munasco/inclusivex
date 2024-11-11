@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "InclusiveX",
+  title: "YouXtra",
   description: "Automated accessibility compliance solution for websites",
 };
 

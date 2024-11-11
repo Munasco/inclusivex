@@ -90,7 +90,7 @@ export default function Page() {
                           strokeLinejoin="round"/>
                 </svg>
 
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">InclusiveX</h1>
+                <h1 className="text-4xl md:text-6xl font-bold mb-4">YouXtra</h1>
                 <p className="text-2xl md:text-3xl mb-8">Making Digital Platforms Accessible for Everyone</p>
                 <p className="text-xl mb-12 max-w-2xl mx-auto">
                     We&#39;re working hard to bring you a revolutionary platform that ensures web accessibility for all.
@@ -180,12 +180,12 @@ export default function Page() {
                     We are committed to making this website accessible to all users. If you have any questions or
                     suggestions
                     regarding the accessibility of this site, please contact us at&nbsp;
-                    <a href="mailto:munachi@ekogenie.com"
-                       className="text-sleek-green hover:underline">munachi@ekogenie.com</a>.
+                    <a href="mailto:munachiernesteze@gmail.com"
+                       className="text-sleek-green hover:underline">munachiernesteze@gmail.com</a>.
                 </p>
 
                 <p className="text-sm">
-                    &copy; 2024 InclusiveX. All rights reserved.
+                    &copy; 2024 YouXtra. All rights reserved.
                 </p>
             </motion.div>
 
