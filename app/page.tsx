@@ -20,7 +20,6 @@ import {
     PlugZap,
     Search,
     ShieldCheck,
-    Twitter,
     X,
     Zap,
 } from "lucide-react"
