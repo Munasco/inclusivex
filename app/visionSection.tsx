@@ -52,11 +52,11 @@ export default function VisionSection() {
                                     &quot;25 years ago, we dreamt of a connected future and got the internet but 25% of
                                     us are still being left out of it.&quot;
                                 </blockquote>
-                                <p className="text-sleek-green">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ YouXtra </span>
+                                <p className="text-sleek-green">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ UX+</span>
                                 </p>
                             </div>
                         </div>
-                        <Button variant="outline"
+                        <Button variant="default"
                                 className="text-green-950 font-bold border-sleek-green hover:bg-sleek-green hover:text-black">
                             MORE ON OUR VISION <ChevronRight className="ml-2 h-4 w-4"/>
                         </Button>

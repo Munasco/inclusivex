@@ -5,37 +5,32 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Twitter } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Testimonial } from "@/app/page";
-import { motion, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 
 export function SlidingTestimonials({ testimonials }: { testimonials: Testimonial[] }) {
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimationControls();
+    // Calculate the total width to animate across
+    const testimonialWidth = 350; // Width of each testimonial card in pixels
+    const gap = 24; // Gap between each card, equivalent to 1.5rem in pixels
+    const itemCount = testimonials.length;
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    // Calculate total distance to scroll, using JavaScript
+    const totalScrollDistance =-(testimonialWidth * itemCount + gap * itemCount);
+    useEffect(() => {
+        const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+        if (darkThemeMq.matches) {
+            // Theme set to dark.
+            console.log("Dark theme");
+        } else {
+            // Theme set to light.
+            console.log("Light theme");
+        }
 
-    // Clone the first few items and append them to create a seamless loop
-    const content = container.querySelector(".content") as HTMLElement;
-    if (!content) return;
+    }, []);
 
-    const items = content.querySelectorAll(".testimonial-card");
-    const clonedItems = Array.from(items)
-        .slice(0, 3)
-        .map((item) => item.cloneNode(true));
 
-    clonedItems.forEach((item) => content.appendChild(item));
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) {
-      controls.stop();
-    } else {
-      controls.start("animate")
-    }
-  }, [isPaused, controls]);
-
+    const clonedTestimonials = testimonials.slice(0, 5);
   return (
       <div className="w-full overflow-hidden py-12">
         <motion.div
@@ -43,23 +38,19 @@ export function SlidingTestimonials({ testimonials }: { testimonials: Testimonia
             className="relative w-full flex gap-6"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            animate={controls}
-            variants={{
-              animate: {
-                x: ["0%", "-100%"],
-                transition: {
-                  repeat: Infinity,
-                  ease: "linear",
-                  duration: 40,
-                },
-              },
+            initial={{ x: 0 }}
+            animate={isPaused ? { x: 0 } : { x: [0, totalScrollDistance] }}
+            transition={{
+                repeat: isPaused ? 0 : Infinity,
+                ease: "linear",
+                duration: 40,
             }}
         >
           {/* Original testimonials */}
-          {testimonials.map((testimonial, index) => (
+          {[...testimonials, ...clonedTestimonials].map((testimonial, index) => (
               <Card
                   key={index}
-                  className="testimonial-card w-[350px] flex-shrink-0 bg-white dark:bg-zinc-950"
+                  className="w-[350px] flex-shrink-0 bg-gradient-to-br from-[#2A2C35] to-[#1E2028]"
               >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
@@ -73,13 +64,13 @@ export function SlidingTestimonials({ testimonials }: { testimonials: Testimonia
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <div className="text-sm font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                      <div className="text-sm font-semibold text-white">{testimonial.name}</div>
+                      <div className="text-sm text-white dark:text-zinc-400">
                         {testimonial.company}
                       </div>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm text-zinc-950 dark:text-zinc-50">{testimonial.content}</p>
+                  <p className="mt-4 text-sm text-white">{testimonial.content}</p>
                   <div className="mt-4 flex items-center gap-2 text-sm text-emerald-500">
                     <Twitter className="h-4 w-4" />
                     Shared on Twitter
@@ -88,38 +79,6 @@ export function SlidingTestimonials({ testimonials }: { testimonials: Testimonia
               </Card>
           ))}
 
-          {/* Cloned testimonials to create seamless marquee */}
-          {testimonials.slice(0, 3).map((testimonial, index) => (
-              <Card
-                  key={`cloned-${index}`}
-                  className="testimonial-card w-[350px] flex-shrink-0 bg-white dark:bg-zinc-950"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                      <AvatarFallback>
-                        {testimonial.name
-                            .split("")
-                            .map((n) => n[0])
-                            .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <div className="text-sm font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-zinc-500 dark:text-zinc-400">
-                        {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm text-zinc-950 dark:text-zinc-50">{testimonial.content}</p>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-emerald-500">
-                    <Twitter className="h-4 w-4" />
-                    Shared on Twitter
-                  </div>
-                </CardContent>
-              </Card>
-          ))}
         </motion.div>
       </div>
   );

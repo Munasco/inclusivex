@@ -17,3 +17,9 @@ body {
     --radius: 0.5rem;
   }
 }
+/* If the user prefers dark mode,
+we of course apply color-scheme: dark, as usual */
+html {
+  color-scheme: light;
+}
+

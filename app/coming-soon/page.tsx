@@ -90,7 +90,7 @@ export default function Page() {
                           strokeLinejoin="round"/>
                 </svg>
 
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">UXMax</h1>
+                <h1 className="text-4xl md:text-6xl font-bold mb-4">UX+</h1>
                 <p className="text-2xl md:text-3xl mb-8">Making Digital Platforms Accessible for Everyone</p>
                 <p className="text-xl mb-12 max-w-2xl mx-auto">
                     We&#39;re working hard to bring you a revolutionary platform that ensures web accessibility for all.
@@ -185,7 +185,7 @@ export default function Page() {
                 </p>
 
                 <p className="text-sm">
-                    &copy; 2024 UXMax. All rights reserved.
+                    &copy; 2024 UX+. All rights reserved.
                 </p>
             </motion.div>
 

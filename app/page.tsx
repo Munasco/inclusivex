@@ -144,7 +144,7 @@ export default function LandingPage() {
             name: "John Maverick",
             company: "Shopify",
             avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-            content: "UXMax has revolutionized our approach to web accessibility. It's a game-changer!",
+            content: "UX+ has revolutionized our approach to web accessibility. It's a game-changer!",
         },
         {
             name: "Emily Parker",
@@ -156,13 +156,13 @@ export default function LandingPage() {
             name: "Alex Johnson",
             company: "WebWizards",
             avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-            content: "UXMax's real-time monitoring has helped us maintain WCAG compliance effortlessly.",
+            content: "UX+'s real-time monitoring has helped us maintain WCAG compliance effortlessly.",
         },
         {
             name: "Sophia Martinez",
             company: "InnovateX",
             avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-            content: "Thanks to UXMax, our design team can now focus on creativity while accessibility is handled automatically.",
+            content: "Thanks to UX+, our design team can now focus on creativity while accessibility is handled automatically.",
         },
         {
             name: "Ethan Turner",
@@ -174,7 +174,7 @@ export default function LandingPage() {
             name: "Olivia Green",
             company: "SoftSolutions",
             avatar: "https://randomuser.me/api/portraits/women/6.jpg",
-            content: "UXMax made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
+            content: "UX+ made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
         },
         {
             name: "Liam Brown",
@@ -186,13 +186,13 @@ export default function LandingPage() {
             name: "Emma Wilson",
             company: "UIWorks",
             avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-            content: "Our accessibility audits have never been smoother thanks to UXMax.",
+            content: "Our accessibility audits have never been smoother thanks to UX+.",
         },
         {
             name: "Benjamin Lee",
             company: "CodeCraft",
             avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-            content: "I can’t imagine managing our site’s compliance without UXMax anymore.",
+            content: "I can’t imagine managing our site’s compliance without UX+ anymore.",
         },
         {
             name: "Grace Collins",
@@ -213,13 +213,13 @@ export default function LandingPage() {
                         <div className="flex items-center">
                             <svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="6" cy="6" r="2" fill="#00CC75"/>
-                                <circle cx="18" cy="6" r="2" fill="#00CC75"/>
-                                <circle cx="6" cy="18" r="2" fill="#00CC75"/>
-                                <circle cx="18" cy="18" r="2" fill="#00CC75"/>
-                                <circle cx="12" cy="12" r="3" fill="#00CC75"/>
+                                <circle cx="6" cy="6" r="2" fill="#00FF94"/>
+                                <circle cx="18" cy="6" r="2" fill="#00FF94"/>
+                                <circle cx="6" cy="18" r="2" fill="#00FF94"/>
+                                <circle cx="18" cy="18" r="2" fill="#00FF94"/>
+                                <circle cx="12" cy="12" r="3" fill="#00FF94"/>
                             </svg>
-                            <span>UXMax</span>
+                            <span className="text-gray-300">UX+</span>
                         </div>
                         <span
                             className="text-sm font-normal text-gray-600 ml-10">By TheAccessibilityCompany, Inc.</span>
@@ -235,7 +235,7 @@ export default function LandingPage() {
                         <Button variant="ghost" className="text-[#A1A1AA] hover:bg-dark-theme hover:text-white">
                             Sign In
                         </Button>
-                        <Button className="bg-[#00FF94] text-black hover:bg-[#00CC75]">
+                        <Button className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75]">
                             <a href="/coming-soon">Get Started</a>
                         </Button>
                     </div>
@@ -275,7 +275,7 @@ export default function LandingPage() {
             <footer className="border-t border-[#1E2028] py-8 relative z-10 bg-[#0A0B0D]">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-[#A1A1AA] text-sm">&copy; 2024 UXMax. All rights reserved.</p>
+                        <p className="text-[#A1A1AA] text-sm">&copy; 2024 UX+. All rights reserved.</p>
                         <nav className="flex space-x-6 mt-4 md:mt-0">
                             <Link href="#" className="text-[#A1A1AA] hover:text-white text-sm">
                                 Privacy Policy
@@ -330,7 +330,7 @@ function HeroSection() {
                     100% Digital Accessibility Compliance For Your Website
                 </h1>
                 <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
-                    Empower your web presence with UXMax. Our AI-driven platform instantly identifies and resolves
+                    Empower your web presence with UX+. Our AI-driven platform instantly identifies and resolves
                     accessibility issues, ensuring a seamless experience for every user.
                 </p>
                 <motion.div
@@ -355,7 +355,7 @@ function HeroSection() {
                             transition={{duration: 1.5, repeat: Infinity}}
                         />
                         <Button size="lg"
-                                className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
+                                className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75] font-semibold relative z-10">
                             <a href="/coming-soon">Start Your Accessibility Journey</a>
                         </Button>
                     </motion.div>
@@ -427,7 +427,7 @@ function PowerSection() {
         <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
             <div className="container mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-                    Experience the Power of UXMax
+                    Experience the Power of UX+
                 </h2>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
@@ -441,10 +441,10 @@ function PowerSection() {
                         <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                     </div>
                     <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-            <code>{`// Harness the power of UXMax
-import { UXMax } from 'UXMax';
+            <code>{`// Harness the power of UX+
+import { UXPlus } from 'uxplus';
 
-const app = new UXMax();
+const app = new UXPlus();
 
 app.scan('#main-content').then(issues => {
   console.log('Accessibility issues detected:', issues);
@@ -499,53 +499,6 @@ function OfferingsSection({offerings}: { offerings: Offering[] }) {
     )
 }
 
-// function DocumentationSection() {
-//     return (
-//         <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
-//             <div className="container mx-auto">
-//                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
-//                     Comprehensive Documentation
-//                 </h2>
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//                     <motion.div
-//                         initial={{opacity: 0, x: -20}}
-//                         animate={{opacity: 1, x: 0}}
-//                         transition={{duration: 0.8}}
-//                         className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
-//                     >
-//                         <h3 className="text-xl font-semibold mb-4 text-white">Quick Start Guide</h3>
-//                         <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-//               <code>{`npm install UXMax
-//
-// import { UXMax } from 'UXMax';
-//
-// const app = new UXMax();
-// app.init();
-//
-// // Begin accessibility scan
-// app.scan();`}</code>
-//             </pre>
-//                     </motion.div>
-//                     <motion.div
-//                         initial={{opacity: 0, x: 20}}
-//                         animate={{opacity: 1, x: 0}}
-//                         transition={{duration: 0.8, delay: 0.2}}
-//                         className="bg-[#0A0B0D] p-6 rounded-lg shadow-lg"
-//                     >
-//                         <h3 className="text-xl font-semibold mb-4 text-white">API Reference</h3>
-//                         <ul className="list-disc list-inside text-[#A1A1AA]">
-//                             <li>app.scan(selector: string): Promise&lt;Issue[]&gt;</li>
-//                             <li>app.fix(issues: Issue[]): Promise&lt;Result[]&gt;</li>
-//                             <li>app.monitor(options: MonitorOptions): void</li>
-//                             <li>app.generateReport(): Report</li>
-//                         </ul>
-//                     </motion.div>
-//                 </div>
-//             </div>
-//         </section>
-//     )
-// }
-
 function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBadge[] }) {
     return (
         <section className="py-20 px-4 bg-gradient-to-b from-[#0A0B0D] to-[#1E2028]">
@@ -587,8 +540,8 @@ function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBad
                     ))}
                 </div>
                 <div className="mt-12">
-                    <Button variant="outline"
-                            className="border-sleek-green hover:bg-sleek-green text-black">
+                    <Button variant="default"
+                            className="border-sleek-green hover:bg-sleek-green">
                         Explore Our Compliance Standards <ChevronRight className="ml-2 h-4 w-4"/>
                     </Button>
                 </div>
@@ -614,9 +567,9 @@ function AccessibilityCheckerSection() {
                         <Input
                             type="url"
                             placeholder="Enter your website URL"
-                            className="bg-white text-black w-full md:w-96 rounded-md placeholder-gray-600"
+                            className="w-full md:w-96 rounded-md placeholder-gray-600"
                         />
-                        <Button className="bg-sleek-green text-black hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
+                        <Button className="dark:bg-sleek-green dark:hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
                             Start Free Accessibility Check
                         </Button>
                     </div>
@@ -634,36 +587,6 @@ function TestimonialsSection({testimonials}: { testimonials: Testimonial[] }) {
                     Voices of Satisfied Clients
                 </h2>
                 <SlidingTestimonials testimonials={testimonials} />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, index: number) => (
-                        <motion.div
-                            key={index}
-                            initial={{opacity: 0, y: 20}}
-                            animate={{opacity: 1, y: 0}}
-                            transition={{duration: 0.8, delay: index * 0.2}}
-                            className="bg-gradient-to-br from-[#2A2C35] to-[#1E2028] p-6 rounded-lg shadow-lg"
-                        >
-                            <div className="flex items-center mb-4">
-                                <Image
-                                    src={testimonial.avatar}
-                                    alt={testimonial.name}
-                                    width={40}
-                                    height={40}
-                                    className="rounded-full mr-4"
-                                />
-                                <div>
-                                    <h3 className="font-semibold text-white">{testimonial.name}</h3>
-                                    <p className="text-sm text-[#A1A1AA]">{testimonial.company}</p>
-                                </div>
-                            </div>
-                            <p className="text-[#E2E8F0]">{testimonial.content}</p>
-                            <div className="mt-4 flex items-center text-sleek-green">
-                                <Twitter className="w-5 h-5 mr-2"/>
-                                <span className="text-sm">Shared on Twitter</span>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
             </div>
         </section>
     )
@@ -699,7 +622,7 @@ function CTASection() {
                     className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
                 >
                     Join the ranks of forward-thinking developers and businesses creating truly inclusive digital
-                    experiences with UX Max. Your journey towards a more accessible web starts here.
+                    experiences with UX+. Your journey towards a more accessible web starts here.
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
@@ -723,7 +646,7 @@ function CTASection() {
                             transition={{duration: 1.5, repeat: Infinity}}
                         />
                         <Button size="lg"
-                                className="bg-[#00FF94] text-black hover:bg-[#00CC75] font-semibold relative z-10">
+                                className="dark:bg-[#00FF94] dark:hover:bg-[#00CC75] font-semibold relative z-10">
                             <Zap className="mr-2 h-4 w-4"/>
                             <a href="/coming-soon">Start Free Trial</a>
                         </Button>
