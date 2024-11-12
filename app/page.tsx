@@ -1,28 +1,21 @@
 'use client'
-
-import {ReactNode, useEffect, useState} from "react"
-import {motion, useAnimation} from "framer-motion"
+import {ReactNode} from "react"
+import {motion} from "framer-motion"
 import Link from "next/link"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import VisionSection from "@/app/visionSection";
-import Logo from "./logo.svg";
+import {Header, FeaturesComponent} from "@/app/pageForClient";
 
 import {
     Activity,
     BarChart,
-    Brain,
     ChevronRight,
     FileText,
     GitBranch,
-    Menu,
-    PlugZap,
     Search,
-    ShieldCheck,
-    X,
     Zap,
 } from "lucide-react"
-import {StaticImport} from "next/dist/shared/lib/get-img-props"
 import {demoUrl} from "@/constants/urls";
 import {SlidingTestimonials} from "@/app/sliding-testimonials";
 
@@ -30,13 +23,7 @@ const sleekGreen = "#00FF94"
 
 type ComplianceBadge = {
     name: string
-    image: string | StaticImport
-}
-
-type Feature = {
-    icon: ReactNode
-    title: string
-    description: string
+    fullName: string
 }
 
 type Offering = {
@@ -53,19 +40,7 @@ export type Testimonial = {
 }
 
 export default function LandingPage() {
-    const [showAnimation, setShowAnimation] = useState(false)
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const controls = useAnimation()
 
-    useEffect(() => {
-        setShowAnimation(true)
-        controls.start({
-            opacity: [0.3, 0.6, 0.3],
-            transition: {duration: 3, repeat: Infinity, ease: "easeInOut"}
-        }).catch(() => {
-            console.log("Animation cancelled")
-        })
-    }, [controls])
 
     const offerings: Offering[] = [
         {
@@ -106,36 +81,12 @@ export default function LandingPage() {
     ]
 
     const complianceBadges: ComplianceBadge[] = [
-        {name: "ADA", image: "/placeholder.svg?height=80&width=80"},
-        {name: "WCAG", image: "/placeholder.svg?height=80&width=80"},
-        {name: "EN 301 549", image: "/placeholder.svg?height=80&width=80"},
-        {name: "EAA", image: "/placeholder.svg?height=80&width=80"},
-        {name: "GDPR", image: "/placeholder.svg?height=80&width=80"},
-        {name: "COPPA", image: "/placeholder.svg?height=80&width=80"},
-        {name: "UNRUH", image: "/placeholder.svg?height=80&width=80"},
-    ]
-
-    const features: Feature[] = [
-        {
-            icon: <Zap className="w-10 h-10 text-sleek-green"/>,
-            title: "Lightning-Fast Scans",
-            description: "Our advanced algorithms swiftly detect accessibility issues, providing comprehensive results in seconds.",
-        },
-        {
-            icon: <Brain className="w-10 h-10 text-sleek-green"/>,
-            title: "AI-Driven Solutions",
-            description: "Leverage cutting-edge AI to automatically generate intelligent fixes for identified accessibility problems.",
-        },
-        {
-            icon: <ShieldCheck className="w-10 h-10 text-sleek-green"/>,
-            title: "WCAG Compliance Assurance",
-            description: "Stay ahead of accessibility standards with continuous updates aligned with the latest WCAG guidelines.",
-        },
-        {
-            icon: <PlugZap className="w-10 h-10 text-sleek-green"/>,
-            title: "Seamless Integration",
-            description: "Effortlessly incorporate our tools into your existing workflow, supporting major platforms and frameworks.",
-        },
+        {name: "ADA", fullName: "Americans with Disabilities Act"},
+        {name: "WCAG", fullName: "Web Content Accessibility Guidelines"},
+        {name: "EN 301 549", fullName: "European Standard for ICT Accessibility Requirements"},
+        {name: "EAA", fullName: "European Accessibility Act"},
+        {name: "GDPR", fullName: "General Data Protection Regulation"},
+        {name: "UNRUH", fullName: "Unruh Civil Rights Act"},
     ]
 
     const testimonials: Testimonial[] = [
@@ -205,56 +156,10 @@ export default function LandingPage() {
         <div
             className="flex flex-col min-h-screen bg-gradient-to-b from-[#0A0B0D] to-[#1E2028] text-white relative overflow-hidden">
             <DottedBackground/>
-
-            <header className="border-b border-[#1E2028] relative z-10 backdrop-blur-sm bg-opacity-80 bg-[#0A0B0D]">
-                <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                    <Link href="/" className="text-2xl font-bold text-gray-800 flex flex-col items-start">
-                        <div className="flex items-center">
-                            <Logo className="w-8 h-8 mr-2 text"/>
-                            <span className="text-gray-300">UX+</span>
-                        </div>
-                        <span
-                            className="text-sm font-normal text-gray-600 ml-10 font-mono">By TheAccessibilityCompany, Inc.</span>
-                    </Link>
-                    <nav className="hidden md:flex space-x-6">
-                        <NavLink href="/coming-soon">Documentation</NavLink>
-                        <NavLink href="/coming-soon">Pricing</NavLink>
-                        <NavLink href="/coming-soon">Blog</NavLink>
-                        <NavLink href="/coming-soon">Careers</NavLink>
-                        <NavLink href="/coming-soon">Demo</NavLink>
-                    </nav>
-                    <div className="flex items-center space-x-2">
-                        <Button variant="ghost" className="text-[#A1A1AA] hover:bg-dark-theme hover:text-white">
-                            Sign In
-                        </Button>
-                        <Button className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75]">
-                            <a href="/coming-soon">Get Started</a>
-                        </Button>
-                    </div>
-                    <button
-                        className="md:hidden text-white"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        {isMenuOpen ? <X/> : <Menu/>}
-                    </button>
-                </div>
-                {isMenuOpen && (
-                    <div className="md:hidden bg-[#0A0B0D] p-4">
-                        <nav className="flex flex-col space-y-4">
-                            <NavLink href="#">Documentation</NavLink>
-                            <NavLink href="#">Pricing</NavLink>
-                            <NavLink href="#">Blog</NavLink>
-                            <NavLink href="#">Careers</NavLink>
-                            <NavLink href="#">Demo</NavLink>
-                        </nav>
-                    </div>
-                )}
-            </header>
-
+            <Header/>
             <main className="flex-grow relative z-10">
                 <HeroSection/>
-                <FeaturesSection features={features} showAnimation={showAnimation}/>
+                <FeaturesComponent/>
                 <PowerSection/>
                 <OfferingsSection offerings={offerings}/>
                 <VisionSection/>
@@ -283,14 +188,6 @@ export default function LandingPage() {
                 </div>
             </footer>
         </div>
-    )
-}
-
-function NavLink({href, children}: { href: string; children: ReactNode }) {
-    return (
-        <Link href={href} className="text-[#A1A1AA] hover:text-white transition-colors">
-            {children}
-        </Link>
     )
 }
 
@@ -357,59 +254,6 @@ function HeroSection() {
                     </Button>
                 </motion.div>
             </motion.div>
-        </section>
-    )
-}
-
-function FeaturesSection({features,  showAnimation}: { features: Feature[]; showAnimation: boolean }) {
-    const containerVariants = {
-        hidden: {opacity: 0},
-        visible: {
-            opacity: 1,
-            transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: {y: 20, opacity: 0},
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    }
-
-    return (
-        <section className="py-16 relative overflow-hidden">
-            <div className="container mx-auto px-4 relative z-10">
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={showAnimation ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-                >
-                    {features.map((feature, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="bg-gradient-to-br from-[#1E2028] to-[#2A2C35] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        >
-                            <div className="flex items-center justify-center mb-4">
-                                <motion.div
-                                    whileHover={{scale: 1.1, rotate: 360}}
-                                    transition={{duration: 0.5}}
-                                >
-                                    {feature.icon}
-                                </motion.div>
-                            </div>
-                            <h1 className="text-xl font-semibold mb-2 text-center text-white">{feature.title}</h1>
-                            <p className="text-[#A1A1AA] text-center">{feature.description}</p>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
         </section>
     )
 }
@@ -517,9 +361,25 @@ function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBad
                     {complianceBadges.map((badge, index) => (
                         <div
                             key={index}
-                            className="flex flex-col items-center justify-center w-36 h-36 rounded-full bg-sleek-green shadow-lg hover:shadow-xl transition-shadow"
+                            className="flex flex-col items-center justify-center w-40 h-40 rounded-full bg-green-900 shadow-lg hover:shadow-xl transition-shadow"
                         >
-                            <div className="flex items-center justify-center w-32 h-32 rounded-full bg-white text-gray-900">
+                            {/* Curved Text */}
+                            <div className="absolute w-40 h-40 flex items-center justify-center text-center">
+                                <svg viewBox="0 0 200 200" >
+                                    <defs>
+                                        <path
+                                            id="textPath"
+                                            d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"
+                                        />
+                                    </defs>
+                                    <text fill="white" fontSize="14" fontWeight="bold">
+                                        <textPath xlinkHref="#textPath" textAnchor="start" startOffset="0%">
+                                            {badge.fullName.toUpperCase()}
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </div>
+                            <div className="flex items-center justify-center w-28 h-28 rounded-full bg-white text-gray-900">
                                 <div className="text-center px-2">
                                     <div className="font-bold text-md mb-1">{badge.name}</div>
                                     <div className="text-sm">Compliance</div>
