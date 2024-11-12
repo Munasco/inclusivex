@@ -25,6 +25,7 @@ import {
 } from "lucide-react"
 import {StaticImport} from "next/dist/shared/lib/get-img-props"
 import {demoUrl} from "@/constants/urls";
+import {SlidingTestimonials} from "@/app/sliding-testimonials";
 
 const sleekGreen = "#00FF94"
 
@@ -45,7 +46,7 @@ type Offering = {
     description: string
 }
 
-type Testimonial = {
+export type Testimonial = {
     name: string
     company: string
     avatar: string
@@ -632,6 +633,7 @@ function TestimonialsSection({testimonials}: { testimonials: Testimonial[] }) {
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
                     Voices of Satisfied Clients
                 </h2>
+                <SlidingTestimonials testimonials={testimonials} />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, index: number) => (
                         <motion.div
@@ -697,7 +699,7 @@ function CTASection() {
                     className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
                 >
                     Join the ranks of forward-thinking developers and businesses creating truly inclusive digital
-                    experiences with UXMax. Your journey towards a more accessible web starts here.
+                    experiences with UX Max. Your journey towards a more accessible web starts here.
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
