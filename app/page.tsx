@@ -7,6 +7,7 @@ import Image from "next/image"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import VisionSection from "@/app/visionSection";
+import Logo from "./logo.svg";
 
 import {
     Activity,
@@ -211,18 +212,11 @@ export default function LandingPage() {
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                     <Link href="/" className="text-2xl font-bold text-gray-800 flex flex-col items-start">
                         <div className="flex items-center">
-                            <svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="6" cy="6" r="2" fill="#00FF94"/>
-                                <circle cx="18" cy="6" r="2" fill="#00FF94"/>
-                                <circle cx="6" cy="18" r="2" fill="#00FF94"/>
-                                <circle cx="18" cy="18" r="2" fill="#00FF94"/>
-                                <circle cx="12" cy="12" r="3" fill="#00FF94"/>
-                            </svg>
+                            <Logo className="w-8 h-8 mr-2 text"/>
                             <span className="text-gray-300">UX+</span>
                         </div>
                         <span
-                            className="text-sm font-normal text-gray-600 ml-10">By TheAccessibilityCompany, Inc.</span>
+                            className="text-sm font-normal text-gray-600 ml-10 font-mono">By TheAccessibilityCompany, Inc.</span>
                     </Link>
                     <nav className="hidden md:flex space-x-6">
                         <NavLink href="/coming-soon">Documentation</NavLink>

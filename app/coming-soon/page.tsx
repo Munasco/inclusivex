@@ -7,10 +7,17 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Label} from "@/components/ui/label"
 import {Facebook, Instagram, Linkedin, Twitter} from 'lucide-react'
 import Countdown, {CountdownRenderProps} from "react-countdown"
-import {ChangeEvent, FormEvent, useState, useRef, useEffect} from "react"; // Import the countdown library
+import {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
+import Logo from "@/app/logo.svg";
+import Link from "next/link"; // Import the countdown library
 
 const sleekGreen = "#00FF94"
 const targetDate = new Date("2024-11-30T00:00:00")
+
+const socialLinks = [
+    { href: "https://twitter.com/theaccessibilitycompany", label: "Follow us on Twitter", Icon: Twitter },
+    { href: "https://facebook.com/theaccessibilitycompany", label: "Follow us on Facebook", Icon: Facebook },
+    { href: "https://linkedin.com/company/theaccessibilitycompany", label: "Follow us on LinkedIn", Icon: Linkedin }];
 
 // Custom renderer for the countdown
 const CountdownRenderer = ({days, hours, minutes, seconds, completed}: CountdownRenderProps) => {
@@ -81,16 +88,9 @@ export default function Page() {
                 transition={{duration: 0.8}}
                 className="text-center max-w-4xl w-full"
             >
-                <svg className="w-24 h-24 mx-auto mb-8" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill={sleekGreen}/>
-                    <path d="M2 17L12 22L22 17" stroke={sleekGreen} strokeWidth="2" strokeLinecap="round"
-                          strokeLinejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke={sleekGreen} strokeWidth="2" strokeLinecap="round"
-                          strokeLinejoin="round"/>
-                </svg>
+                <Link href="/"><Logo className="w-24 h-24 mx-auto mb-8"/>
+                    <h1 className="text-4xl md:text-6xl font-bold mb-4">UX+</h1></Link>
 
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">UX+</h1>
                 <p className="text-2xl md:text-3xl mb-8">Making Digital Platforms Accessible for Everyone</p>
                 <p className="text-xl mb-12 max-w-2xl mx-auto">
                     We&#39;re working hard to bring you a revolutionary platform that ensures web accessibility for all.
@@ -158,18 +158,19 @@ export default function Page() {
                             />
                         </div>
                     )}
-                    <Button type="submit" className="bg-sleek-green text-gray-900 hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
+                    <Button type="submit"
+                            className="bg-sleek-green text-gray-900 hover:bg-[rgba(0,255,148,0.6)] w-full md:w-auto">
                         Notify Me
                     </Button>
                 </form>
 
                 <div className="flex justify-center space-x-6 mb-12">
-                    {[Twitter, Facebook, Linkedin, Instagram].map((Icon, index) => (
+                    {socialLinks.map(({href, label, Icon}, index) => (
                         <a
                             key={index}
-                            href="#"
+                            href={href}
                             className="text-white hover:text-sleek-green transition-colors"
-                            aria-label={`Follow us on ${Icon.name}`}
+                            aria-label={label}
                         >
                             <Icon className="w-6 h-6"/>
                         </a>
