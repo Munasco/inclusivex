@@ -5,7 +5,7 @@ import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import {Label} from "@/components/ui/label"
-import {Facebook, Instagram, Linkedin, Twitter} from 'lucide-react'
+import {Facebook, Linkedin, Twitter} from 'lucide-react'
 import Countdown, {CountdownRenderProps} from "react-countdown"
 import {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
 import Logo from "@/app/logo.svg";

@@ -3,7 +3,6 @@
 import {ReactNode, useEffect, useState} from "react"
 import {motion, useAnimation} from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import VisionSection from "@/app/visionSection";
@@ -515,21 +514,18 @@ function ComplianceSection({complianceBadges}: { complianceBadges: ComplianceBad
                     compliance standards for digital assets, including WCAG 2.2 and EN 301 549.
                 </motion.p>
                 <div className="flex flex-wrap justify-center gap-8">
-                    {complianceBadges.map((badge: ComplianceBadge, index: number) => (
-                        <motion.div
+                    {complianceBadges.map((badge, index) => (
+                        <div
                             key={index}
-                            initial={{opacity: 0, scale: 0.5}}
-                            animate={{opacity: 1, scale: 1}}
-                            transition={{duration: 0.5, delay: index * 0.1}}
+                            className="flex flex-col items-center justify-center w-36 h-36 rounded-full bg-sleek-green shadow-lg hover:shadow-xl transition-shadow"
                         >
-                            <Image
-                                src={badge.image}
-                                alt={`${badge.name} Compliance Badge`}
-                                width={80}
-                                height={80}
-                                className="rounded-full"
-                            />
-                        </motion.div>
+                            <div className="flex items-center justify-center w-32 h-32 rounded-full bg-white text-gray-900">
+                                <div className="text-center px-2">
+                                    <div className="font-bold text-md mb-1">{badge.name}</div>
+                                    <div className="text-sm">Compliance</div>
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
                 <div className="mt-12">
