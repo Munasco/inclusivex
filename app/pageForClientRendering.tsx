@@ -66,7 +66,7 @@ export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <header className="border-b border-[#1E2028] relative z-10 backdrop-blur-sm bg-opacity-80 bg-[#0A0B0D]">
+        <header className="sticky top-0 border-b border-[#1E2028] z-10 backdrop-blur-sm bg-opacity-80 bg-[#0A0B0D]">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                 <Link href="/" className="text-2xl font-bold text-gray-800 flex flex-col items-start">
                     <div className="flex items-center">
@@ -74,7 +74,7 @@ export function Header() {
                         <span className="text-gray-300">UX+</span>
                     </div>
                     <span
-                        className="text-sm font-normal text-gray-600 ml-10 font-mono hidden lg:inline-block">By TheAccessibilityCompany, Inc.</span>
+                        className="text-sm font-normal text-gray-600 ml-10 font-mono hidden lg:inline-block">By A11yLabs, Inc.</span>
                 </Link>
                 <nav className="hidden md:flex space-x-6">
                     <NavLink href="/coming-soon">Documentation</NavLink>
@@ -87,8 +87,8 @@ export function Header() {
                     <Button variant="ghost" className="text-[#A1A1AA] hover:bg-dark-theme hover:text-white">
                         Sign In
                     </Button>
-                    <Button className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75]">
-                        <a href="/coming-soon">Get Started</a>
+                    <Button asChild className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75]">
+                        <Link href="/coming-soon">Get Started</Link>
                     </Button>
                 </div>
                 <button
@@ -137,8 +137,8 @@ function FeaturesSection({features, showAnimation}: { features: Feature[]; showA
     }
 
     return (
-        <section className="py-16 relative overflow-hidden">
-            <div className="container mx-auto px-4 relative z-10">
+        <section className="py-16 overflow-hidden">
+            <div className="container mx-auto px-4">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"

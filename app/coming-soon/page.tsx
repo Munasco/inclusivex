@@ -15,8 +15,8 @@ const sleekGreen = "#00FF94"
 const targetDate = new Date("2024-11-30T00:00:00")
 
 const socialLinks = [
-    { href: "https://twitter.com/theaccessibilitycompany", label: "Follow us on Twitter", Icon: Twitter },
-    { href: "https://facebook.com/theaccessibilitycompany", label: "Follow us on Facebook", Icon: Facebook },
+    { href: "https://twitter.com/a11ylabs", label: "Follow us on Twitter", Icon: Twitter },
+    { href: "https://facebook.com/a11ylabs", label: "Follow us on Facebook", Icon: Facebook },
     { href: "https://linkedin.com/company/theaccessibilitycompany", label: "Follow us on LinkedIn", Icon: Linkedin }];
 
 // Custom renderer for the countdown

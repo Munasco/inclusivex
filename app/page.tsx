@@ -1,11 +1,10 @@
 'use client'
 import {ReactNode} from "react"
 import {motion} from "framer-motion"
-import Link from "next/link"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import VisionSection from "@/app/visionSection";
-import {Header, FeaturesComponent} from "@/app/pageForClient";
+import {Header, FeaturesComponent} from "@/app/pageForClientRendering";
 
 import {
     Activity,
@@ -154,10 +153,10 @@ export default function LandingPage() {
 
     return (
         <div
-            className="flex flex-col min-h-screen bg-gradient-to-b from-[#0A0B0D] to-[#1E2028] text-white relative overflow-hidden">
+            className="flex flex-col min-h-screen bg-gradient-to-b from-[#0A0B0D] to-[#1E2028] text-white relative" >
             <DottedBackground/>
             <Header/>
-            <main className="flex-grow relative z-10">
+            <main className="flex-grow relative">
                 <HeroSection/>
                 <FeaturesComponent/>
                 <PowerSection/>
@@ -168,25 +167,6 @@ export default function LandingPage() {
                 <TestimonialsSection testimonials={testimonials}/>
                 <CTASection/>
             </main>
-
-            <footer className="border-t border-[#1E2028] py-8 relative z-10 bg-[#0A0B0D]">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-[#A1A1AA] text-sm">&copy; 2024 UX+. All rights reserved.</p>
-                        <nav className="flex space-x-6 mt-4 md:mt-0">
-                            <Link href="#" className="text-[#A1A1AA] hover:text-white text-sm">
-                                Privacy Policy
-                            </Link>
-                            <Link href="#" className="text-[#A1A1AA] hover:text-white text-sm">
-                                Terms of Service
-                            </Link>
-                            <Link href="#" className="text-[#A1A1AA] hover:text-white text-sm">
-                                Contact Us
-                            </Link>
-                        </nav>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }
@@ -208,9 +188,9 @@ function DottedBackground() {
 
 function HeroSection() {
     return (
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-20 px-4 overflow-hidden">
             <motion.div
-                className="container mx-auto text-center relative z-10"
+                className="container mx-auto text-center"
                 initial={{opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 0.8}}
@@ -244,7 +224,7 @@ function HeroSection() {
                             transition={{duration: 1.5, repeat: Infinity}}
                         />
                         <Button size="lg"
-                                className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75] font-semibold relative z-10">
+                                className="dark:bg-[#00FF94] text-black dark:hover:bg-[#00CC75] font-semibold">
                             <a href="/coming-soon">Start Your Accessibility Journey</a>
                         </Button>
                     </motion.div>
@@ -455,7 +435,7 @@ function CTASection() {
                 }}
                 transition={{duration: 4, repeat: Infinity, repeatType: "reverse"}}
             />
-            <div className="container mx-auto text-center relative z-10">
+            <div className="container mx-auto text-center">
                 <motion.h2
                     initial={{opacity: 0, y: -20}}
                     animate={{opacity: 1, y: 0}}
@@ -495,7 +475,7 @@ function CTASection() {
                             transition={{duration: 1.5, repeat: Infinity}}
                         />
                         <Button size="lg"
-                                className="dark:bg-[#00FF94] dark:hover:bg-[#00CC75] font-semibold relative z-10">
+                                className="dark:bg-[#00FF94] dark:hover:bg-[#00CC75] font-semibold">
                             <Zap className="mr-2 h-4 w-4"/>
                             <a href="/coming-soon">Start Free Trial</a>
                         </Button>

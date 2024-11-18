@@ -3,83 +3,91 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Twitter } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Testimonial } from "@/app/page";
-import { motion } from "framer-motion";
+import {Button} from "@/components/ui/button";
+import {motion, AnimatePresence} from "framer-motion";
 
 export function SlidingTestimonials({ testimonials }: { testimonials: Testimonial[] }) {
-  const [isPaused, setIsPaused] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-    // Calculate the total width to animate across
-    const testimonialWidth = 350; // Width of each testimonial card in pixels
-    const gap = 24; // Gap between each card, equivalent to 1.5rem in pixels
-    const itemCount = testimonials.length;
+    const [showAll, setShowAll] = useState(false)
+    // Animation variants
+    const testimonialVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -50 },
+    };
 
-    // Calculate total distance to scroll, using JavaScript
-    const totalScrollDistance =-(testimonialWidth * itemCount + gap * itemCount);
-    useEffect(() => {
-        const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-        if (darkThemeMq.matches) {
-            // Theme set to dark.
-            console.log("Dark theme");
-        } else {
-            // Theme set to light.
-            console.log("Light theme");
-        }
-
-    }, []);
-
-
-    const clonedTestimonials = testimonials.slice(0, 5);
-  return (
-      <div className="w-full overflow-hidden py-12">
-        <motion.div
-            ref={containerRef}
-            className="relative w-full flex gap-6"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            initial={{ x: 0 }}
-            animate={isPaused ? { x: 0 } : { x: [0, totalScrollDistance] }}
-            transition={{
-                repeat: isPaused ? 0 : Infinity,
-                ease: "linear",
-                duration: 40,
-            }}
-        >
-          {/* Original testimonials */}
-          {[...testimonials, ...clonedTestimonials].map((testimonial, index) => (
-              <Card
-                  key={index}
-                  className="w-[350px] flex-shrink-0 bg-gradient-to-br from-[#2A2C35] to-[#1E2028]"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                      <AvatarFallback>
-                        {testimonial.name
-                            .split("")
-                            .map((n) => n[0])
-                            .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <div className="text-sm font-semibold text-white">{testimonial.name}</div>
-                      <div className="text-sm text-white dark:text-zinc-400">
-                        {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm text-white">{testimonial.content}</p>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-emerald-500">
-                    <Twitter className="h-4 w-4" />
-                    Shared on Twitter
-                  </div>
-                </CardContent>
-              </Card>
-          ))}
-
-        </motion.div>
-      </div>
-  );
+    return (
+        <div className="container mx-auto px-4 py-8">
+            <h2 className="text-2xl font-bold mb-6 text-center">What Our Customers Say</h2>
+            <div className="relative">
+                <motion.div
+                    variants={{
+                        hidden: {},
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.1,
+                            },
+                        },
+                        exit: {
+                            transition: {
+                                staggerChildren: 0.1,
+                                staggerDirection: -1,
+                            },
+                        },
+                    }}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+                >
+                    <AnimatePresence>
+                        {(showAll ? testimonials : testimonials.slice(0, 4)).map((testimonial, index) => (
+                            <motion.div
+                                key={index}
+                                variants={testimonialVariants}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                layout // This prop enables smooth layout transitions
+                            >
+                                <Card className="bg-zinc-900 text-white border-zinc-800">
+                                    <CardContent className="p-6">
+                                        <div className="flex items-start gap-3 mb-3">
+                                            <Avatar className="h-10 w-10 rounded-full">
+                                                <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                                                <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                                <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                                                <p className="text-sm text-zinc-400">{testimonial.company}</p>
+                                            </div>
+                                        </div>
+                                        <p className="text-zinc-100 mb-4">{testimonial.content}</p>
+                                        <div className="flex items-center gap-2 text-emerald-500">
+                                            <Twitter className="h-4 w-4" />
+                                            <span className="text-sm">Shared on Twitter</span>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+                {!showAll && (
+                    <div
+                        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"
+                        aria-hidden="true"
+                    ></div>
+                )}
+            </div>
+            <div className="text-center">
+                <Button
+                    onClick={() => setShowAll(!showAll)}
+                    variant="outline"
+                    className="bg-zinc-900 text-white hover:bg-zinc-800"
+                >
+                    {showAll ? "Show Less" : "View More Testimonials"}
+                </Button>
+            </div>
+        </div>
+    );
 }
