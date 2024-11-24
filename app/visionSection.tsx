@@ -52,7 +52,7 @@ export default function VisionSection() {
                                     &quot;25 years ago, we dreamt of a connected future and got the internet but 25% of
                                     us are still being left out of it.&quot;
                                 </blockquote>
-                                <p className="text-sleek-green">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ UX+</span>
+                                <p className="text-sleek-green font-mono">Munachi Ernest-Eze <span className="text-[#A1A1AA]">Founder @ A11y Labs</span>
                                 </p>
                             </div>
                         </div>

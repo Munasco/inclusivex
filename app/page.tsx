@@ -93,7 +93,7 @@ export default function LandingPage() {
             name: "John Maverick",
             company: "Shopify",
             avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-            content: "UX+ has revolutionized our approach to web accessibility. It's a game-changer!",
+            content: "Inclusivio has revolutionized our approach to web accessibility. It's a game-changer!",
         },
         {
             name: "Emily Parker",
@@ -105,13 +105,13 @@ export default function LandingPage() {
             name: "Alex Johnson",
             company: "WebWizards",
             avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-            content: "UX+'s real-time monitoring has helped us maintain WCAG compliance effortlessly.",
+            content: "Inclusivio's real-time monitoring has helped us maintain WCAG compliance effortlessly.",
         },
         {
             name: "Sophia Martinez",
             company: "InnovateX",
             avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-            content: "Thanks to UX+, our design team can now focus on creativity while accessibility is handled automatically.",
+            content: "Thanks to Inclusivio, our design team can now focus on creativity while accessibility is handled automatically.",
         },
         {
             name: "Ethan Turner",
@@ -123,7 +123,7 @@ export default function LandingPage() {
             name: "Olivia Green",
             company: "SoftSolutions",
             avatar: "https://randomuser.me/api/portraits/women/6.jpg",
-            content: "UX+ made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
+            content: "Inclusivio made our platform more accessible, and we’ve noticed improved user engagement since integrating it.",
         },
         {
             name: "Liam Brown",
@@ -135,13 +135,13 @@ export default function LandingPage() {
             name: "Emma Wilson",
             company: "UIWorks",
             avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-            content: "Our accessibility audits have never been smoother thanks to UX+.",
+            content: "Our accessibility audits have never been smoother thanks to Inclusivio.",
         },
         {
             name: "Benjamin Lee",
             company: "CodeCraft",
             avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-            content: "I can’t imagine managing our site’s compliance without UX+ anymore.",
+            content: "I can’t imagine managing our site’s compliance without Inclusivio anymore.",
         },
         {
             name: "Grace Collins",
@@ -199,7 +199,7 @@ function HeroSection() {
                     100% Digital Accessibility Compliance For Your Website
                 </h1>
                 <p className="text-xl md:text-2xl text-[#A1A1AA] mb-8 max-w-3xl mx-auto">
-                    Empower your web presence with UX+. Our AI-driven platform instantly identifies and resolves
+                    Empower your web presence with Inclusivio. Our AI-driven platform instantly identifies and resolves
                     accessibility issues, ensuring a seamless experience for every user.
                 </p>
                 <motion.div
@@ -243,7 +243,7 @@ function PowerSection() {
         <section className="py-20 px-4 bg-gradient-to-r from-[#1E2028] to-[#2A2C35]">
             <div className="container mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-                    Experience the Power of UX+
+                    Experience the Power of Inclusivio
                 </h2>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}
@@ -257,7 +257,7 @@ function PowerSection() {
                         <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                     </div>
                     <pre className="text-sm text-[#E2E8F0] overflow-x-auto">
-            <code>{`// Harness the power of UX+
+            <code>{`// Harness the power of Inclusivio
 import { UXPlus } from 'uxplus';
 
 const app = new UXPlus();
@@ -451,7 +451,7 @@ function CTASection() {
                     className="text-xl text-[#A1A1AA] mb-12 max-w-3xl mx-auto"
                 >
                     Join the ranks of forward-thinking developers and businesses creating truly inclusive digital
-                    experiences with UX+. Your journey towards a more accessible web starts here.
+                    experiences with Inclusivio. Your journey towards a more accessible web starts here.
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, scale: 0.9}}

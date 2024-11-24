@@ -71,7 +71,7 @@ export function Header() {
                 <Link href="/" className="text-2xl font-bold text-gray-800 flex flex-col items-start">
                     <div className="flex items-center">
                         <Logo className="w-8 h-8 mr-2 text"/>
-                        <span className="text-gray-300">UX+</span>
+                        <span className="text-gray-300">Inclusivio</span>
                     </div>
                     <span
                         className="text-sm font-normal text-gray-600 ml-10 font-mono hidden lg:inline-block">By A11yLabs, Inc.</span>

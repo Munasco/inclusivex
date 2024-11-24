@@ -89,7 +89,7 @@ export default function Page() {
                 className="text-center max-w-4xl w-full"
             >
                 <Link href="/"><Logo className="w-24 h-24 mx-auto mb-8"/>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4">UX+</h1></Link>
+                    <h1 className="text-4xl md:text-6xl font-bold mb-4">Inclusivio</h1></Link>
 
                 <p className="text-2xl md:text-3xl mb-8">Making Digital Platforms Accessible for Everyone</p>
                 <p className="text-xl mb-12 max-w-2xl mx-auto">
@@ -183,10 +183,6 @@ export default function Page() {
                     regarding the accessibility of this site, please contact us at&nbsp;
                     <a href="mailto:munachiernesteze@gmail.com"
                        className="text-sleek-green hover:underline">munachiernesteze@gmail.com</a>.
-                </p>
-
-                <p className="text-sm">
-                    &copy; 2024 UX+. All rights reserved.
                 </p>
             </motion.div>
 

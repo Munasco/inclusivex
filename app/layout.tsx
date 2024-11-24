@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "UX+",
+  title: "Inclusivio",
   description: "Automated accessibility compliance solution for websites",
 };
 
